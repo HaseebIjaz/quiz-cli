@@ -1,19 +1,5 @@
 import inquirer from "inquirer";
-export var Category;
-(function (Category) {
-    Category["GeneralKnowledge"] = "General Knowledge";
-})(Category || (Category = {}));
-export var Difficulty;
-(function (Difficulty) {
-    Difficulty["Easy"] = "easy";
-    Difficulty["Hard"] = "hard";
-    Difficulty["Medium"] = "medium";
-})(Difficulty || (Difficulty = {}));
-export var Type;
-(function (Type) {
-    Type["Boolean"] = "boolean";
-    Type["Multiple"] = "multiple";
-})(Type || (Type = {}));
+import chalk from 'chalk';
 const questionsUrl = new URL("https://opentdb.com/api.php?amount=10&category=9");
 const fetchData = async (url) => {
     try {
@@ -49,7 +35,7 @@ const startQuiz = async () => {
             }
         });
     });
-    console.log(`Your Score ${score}`);
+    console.log(`Your Score ${chalk.blue.bold(score)}`);
 };
 welcome();
 startQuiz();
